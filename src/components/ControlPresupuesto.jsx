@@ -36,18 +36,19 @@ const ControlPresupuesto = ({ presupuesto, gastos }) => {
           value={porcentaje} 
           text={porcentaje.toString() + '% Gastado'} 
           styles={buildStyles({
-            pathColor: '#3b82f6',
+            pathColor: porcentaje > 100 ? '#DC2626' : '#3b82f6',
             trailColor: '#f5f5f5',
-            textColor: '#3b82f6',
+            textColor: porcentaje > 100 ? '#DC2626' : '#3b82f6',
           })} 
         />
       </div>
 
       <div className="contenido-presupuesto">
+        <button>Resetear App</button>
         <p>
           <span>Presupuesto: </span> {formatearQty(presupuesto)}
         </p>
-        <p>
+        <p className={`${disponible < 0 ? 'negativo' : ''}`}>
           <span>Disponible: </span> {formatearQty(disponible)}
         </p>
         <p>
